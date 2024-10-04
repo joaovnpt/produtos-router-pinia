@@ -9,9 +9,6 @@ const productStore = useProductStore()
 function visualizar(id) {
   router.push(`/product/${id}`)
 }
-
-
-
 </script>
 
 <template>

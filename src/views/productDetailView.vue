@@ -7,6 +7,7 @@ const productStore = useProductStore()
 
 const product = ref({})
 
+
 onMounted(() => {
     product.value = productStore.getProductById(props.id)
 })
