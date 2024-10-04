@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useProductStore } from '@/stores/product'
+import AdicionarProduto from '@/components/AdicionarProduto.vue'
 
 const router = useRouter()
 const productStore = useProductStore()
@@ -8,6 +9,9 @@ const productStore = useProductStore()
 function visualizar(id) {
   router.push(`/product/${id}`)
 }
+
+
+
 </script>
 
 <template>
@@ -26,10 +30,15 @@ function visualizar(id) {
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
-        <td><button @click="visualizar(product.id)">Ver</button></td>
+        <td>
+          <button @click="visualizar(product.id)">Ver</button>
+          <button @click="productStore.deleteProductById(product.id)">Excluir</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  <button @click="productStore.addProduct">Adicionar item</button>
+  <AdicionarProduto v-if="productStore.addActive == true"/>
 </template>
 
 <style scoped>
